@@ -1,2 +1,11 @@
 <h1>Story Droid</h1>
-<p>Hello, world!</p>
+
+<%= form_with url: stories_create_path do |f| %>
+  <%= f.label :story, "Start your story with one sentence or a few:" %>
+  <%= f.text_area :story,
+                  value: @story,
+                  class: "margin-top-small",
+                  rows: 5, style: "width:100%" %>
+
+  <%= f.submit "Continue", class: "margin-top" %>
+<% end %>
