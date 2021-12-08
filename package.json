@@ -1,9 +1,13 @@
 {
-  "name": "app",
-  "private": "true",
+  "name": "storydroid",
+  "private": true,
   "dependencies": {
     "@hotwired/stimulus": "^3.0.1",
     "@hotwired/turbo-rails": "^7.1.0",
-    "esbuild": "^0.14.2"
+    "esbuild": "^0.14.2",
+    "esbuild-rails": "^1.0.3"
+  },
+  "scripts": {
+    "build": "node esbuild.config.js"
   }
 }
