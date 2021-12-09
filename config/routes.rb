@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  root 'stories#show'
+  root 'stories#show', as: :stories_show
 
-  get 'stories/show'
   post 'stories/create'
 end
