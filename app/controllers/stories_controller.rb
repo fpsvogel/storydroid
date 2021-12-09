@@ -2,13 +2,10 @@ require "empty_api_response"
 require "story"
 
 class StoriesController < ApplicationController
-  # TODO auto-growing textarea: https://gist.github.com/yunusemredilber/c0598e168ef643fa8e9876b78c447b91
-  # TODO but ultimately, prompt to sign up for an account.
-
   rescue_from ::StoryDroid::EmptyApiResponse, with: :empty_api_response
-  # TODO why isn't this caught in create, if I remove the length check?
+  # TODO if I remove the length check, why isn't this caught in create?
   # rescue_from ActionDispatch::Cookies::CookieOverflow, with: :session_cookie_full
-  # also, if I go this route, I need to add ~200 chars of filler to
+  # also, if I take this approach, I need to add ~200 chars of filler to
   # session[:story] near the end of create, then remove that filler in show.
   # otherwise the story is discarded in cases where it's slightly too long.
 
@@ -26,7 +23,7 @@ class StoriesController < ApplicationController
       return
     end
     session[:story] = ::StoryDroid::Story.continued_text(params[:story])
-    redirect_to stories_show_path
+    redirect_to stories_show_path(anchor: "footer")
   end
 
   private

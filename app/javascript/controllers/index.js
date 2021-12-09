@@ -3,5 +3,5 @@
 
 import { application } from "./application"
 
-import HelloController from "./hello_controller"
-application.register("hello", HelloController)
+import AutoGrowTextareaController from "./auto_grow_textarea_controller.js"
+application.register("auto-grow-textarea", AutoGrowTextareaController)

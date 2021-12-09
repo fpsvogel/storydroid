@@ -1,11 +1,13 @@
 <h1>Story Droid</h1>
 
-<%= form_with url: stories_create_path do |f| %>
-  <%= f.label :story, "Start your story with one sentence or a few:" %>
+<%= form_with url: stories_create_path,
+    html: { data: { controller: "auto-grow-textarea" } } do |f| %>
+  <%= f.label :story, "Start your story with a few sentences:" %>
   <%= f.text_area :story,
                   value: @story,
                   class: "margin-top-small",
-                  rows: 6, style: "width:100%" %>
-
+                  rows: 6, style: "width:100%",
+                  data: { action: 'input->auto-grow-textarea#resize',
+                          "auto-grow-textarea-target": 'input' } %>
   <%= f.submit "Continue", class: "margin-top" %>
 <% end %>
