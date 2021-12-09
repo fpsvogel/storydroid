@@ -1,8 +1,12 @@
+require "empty_api_response"
+
 class StoriesController < ApplicationController
   # TODO auto-growing textarea: https://gist.github.com/yunusemredilber/c0598e168ef643fa8e9876b78c447b91
   # TODO rescue_from ActionDispatch::Cookies::CookieOverflow
   #      with alert: "The story is too big to fit in the session cookie."
   # TODO but ultimately, prompt to sign up for an account.
+
+  rescue_from ::StoryDroid::EmptyApiResponse, with: :empty_api_response
 
   DEFAULT_STORY = "It was the year 2121. It was a post-apocalyptic world. " \
     "Zombies crowded around my house. One started pounding at my front door. " \
@@ -17,7 +21,7 @@ class StoriesController < ApplicationController
   def create
     response = ai_response(params[:story])
     session[:story] = params[:story] + response
-    redirect_to root_path
+    redirect_to stories_show_path
   end
 
   private
@@ -30,7 +34,10 @@ class StoriesController < ApplicationController
                                     { prompt: prompt,
                                       max_tokens: RESPONSE_SIZE,
                                       temperature: RESPONSE_TEMPERATURE })
-    response = raw_resp.parsed_response["choices"].map { |c| c["text"] }.first
+                     .parsed_response["choices"]
+    raw_resp = nil
+    raise ::StoryDroid::EmptyApiResponse if raw_resp.nil?
+    response = raw_resp.map { |c| c["text"] }.first
     clean_up(response)
   end
 
@@ -38,5 +45,9 @@ class StoriesController < ApplicationController
     response.gsub("\u00A0", " ") # non-breaking space
             .strip
             .gsub(/\s{2,}/, " ") + " "
+  end
+
+  def empty_api_response(error)
+    redirect_to stories_show_path, alert: "#{error} Try again!"
   end
 end
