@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'static_pages#home'
+  root 'stories#show'
 
   post 'stories/create'
 end

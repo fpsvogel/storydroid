@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "Basic API-querying homepage", type: :system do
+RSpec.describe "API-querying story page", type: :system do
   describe "story form" do
     it "has a default pre-filled story" do
       visit root_path
