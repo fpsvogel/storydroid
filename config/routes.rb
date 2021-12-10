@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'stories#show', as: :stories_show
+  root 'stories#edit', as: :stories_edit
 
-  post 'stories/create'
+  patch 'stories/update'
 end
