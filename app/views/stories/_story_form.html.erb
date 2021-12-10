@@ -1,13 +1,11 @@
-<%= turbo_frame_tag(1) do %>
-  <%= form_with url: stories_create_path,
-      html: { data: { controller: "story-form" } } do |f| %>
-    <%= f.label :story, "Start your story with a few sentences:" %>
-    <%= f.text_area :story,
-                    value: @story,
-                    class: "margin-top-small",
-                    rows: 6, style: "width:100%",
-                    data: { action: 'input->story-form#resizeTextArea',
-                            "story-form-target": 'textArea' } %>
-    <%= f.submit "Continue", class: "margin-top" %>
-  <% end %>
+<%= form_with url: stories_create_path,
+    html: { data: { controller: "story-form", turbo: false } } do |f| %>
+  <%= f.label :story, "Start your story with a few sentences:" %>
+  <%= f.text_area :story,
+                  value: @story,
+                  class: "margin-top-small",
+                  rows: 6, style: "width:100%",
+                  data: { action: 'input->story-form#resizeTextArea',
+                          "story-form-target": 'textArea' } %>
+  <%= f.submit "Continue", class: "margin-top" %>
 <% end %>

@@ -17,8 +17,7 @@ class StoriesController < ApplicationController
       session_cookie_full
     else
       session[:story] = ::StoryDroid::Story.continued_text(params[:story])
-      @story = session[:story]
-      render(partial: "stories/story_form")
+      redirect_to stories_show_path(anchor: "footer"), status: "303"
     end
   end
 
