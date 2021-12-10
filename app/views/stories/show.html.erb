@@ -1,13 +1,3 @@
 <h1>Story Droid</h1>
 
-<%= form_with url: stories_create_path,
-    html: { data: { controller: "story-form" } } do |f| %>
-  <%= f.label :story, "Start your story with a few sentences:" %>
-  <%= f.text_area :story,
-                  value: @story,
-                  class: "margin-top-small",
-                  rows: 6, style: "width:100%",
-                  data: { action: 'input->story-form#resizeTextArea',
-                          "story-form-target": 'textArea' } %>
-  <%= f.submit "Continue", class: "margin-top" %>
-<% end %>
+<%= render 'stories/story_form' %>
