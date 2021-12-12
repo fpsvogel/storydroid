@@ -4,16 +4,14 @@ require "story"
 class StoriesController < ApplicationController
   rescue_from ::StoryDroid::EmptyApiResponse, with: :empty_api_response
 
-  MAX_STORY_LENGTH = 1700
-
   def edit
     session[:story] ||= ::StoryDroid::Story.new.to_s
     @story = session[:story]
   end
 
   def update
-    if params[:story].length > MAX_STORY_LENGTH
-      session[:story] = params[:story][0..MAX_STORY_LENGTH]
+    if params[:story].length > ::StoryDroid::Story::MAX_LENGTH
+      session[:story] = params[:story][0..::StoryDroid::Story::MAX_LENGTH]
       session_cookie_full
     else
       session[:story] = ::StoryDroid::Story.continued_text(params[:story])

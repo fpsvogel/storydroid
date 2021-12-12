@@ -1,3 +1,5 @@
+<%# Turbo is disabled (false) so that the 303 redirect in the update action works. %>
+<%# see https://github.com/hotwired/turbo/issues/211 %>
 <%= form_with url: stories_update_path, method: :patch,
     html: { data: { controller: "story-form", turbo: false } } do |f| %>
   <%= f.label :story, "Start your story with a few sentences:" %>

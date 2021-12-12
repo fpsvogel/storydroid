@@ -1,5 +1,6 @@
 module StoryDroid
   class Story
+    MAX_LENGTH = 1700
     DEFAULT_TEXTS =
       {
         zombie: <<~STORY

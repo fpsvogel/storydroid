@@ -1,4 +1,5 @@
 require "rails_helper"
+require "story"
 
 RSpec.describe "API-querying story page", type: :system do
   describe "story form" do
@@ -16,7 +17,7 @@ RSpec.describe "API-querying story page", type: :system do
 
     it "shows a warning when the story is too long" do
       visit stories_edit_path
-      overly_long_story = "0123456789" * 200
+      overly_long_story = "a" * (::StoryDroid::Story::MAX_LENGTH + 10)
       find('textarea').set(overly_long_story)
       find('input[type="submit"]').click
       expect(find('textarea').text.length).to be < overly_long_story.length
