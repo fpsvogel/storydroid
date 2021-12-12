@@ -1,3 +1,7 @@
+<%= content_for :recaptcha_js do %>
+  <%= include_recaptcha_js %>
+<% end %>
+
 <%# Turbo is disabled (false) so that the 303 redirect in the update action works. %>
 <%# see https://github.com/hotwired/turbo/issues/211 %>
 <%= form_with url: stories_update_path, method: :patch,
@@ -10,4 +14,5 @@
                   data: { action: 'input->story-form#resizeTextArea',
                           "story-form-target": 'textArea' } %>
   <%= f.submit "Continue", class: "margin-top" %>
+  <%= recaptcha_action('continue_story') %>
 <% end %>

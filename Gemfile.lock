@@ -121,6 +121,8 @@ GEM
     minitest (5.14.4)
     msgpack (1.4.2)
     multi_xml (0.6.0)
+    new_google_recaptcha (1.3.0)
+      rails (>= 4.2.0)
     nio4r (2.5.8)
     nokogiri (1.12.5-x86_64-linux)
       racc (~> 1.4)
@@ -235,6 +237,7 @@ DEPENDENCIES
   faker
   jbuilder (~> 2.11)
   jsbundling-rails (>= 0.2.2)
+  new_google_recaptcha
   pg (~> 1.1)
   puma (~> 5.0)
   rails (~> 7.0.0.rc1)

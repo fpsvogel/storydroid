@@ -51,6 +51,10 @@ gem "sassc-rails", "~> 2.1"
 # Wrapper for the OpenAI GPT-3 API [https://github.com/alexrudall/ruby-openai]
 gem 'ruby-openai'
 
+# Google reCAPTCHA v3 integration [https://github.com/igorkasyanchuk/new_google_recaptcha]
+# or to integrate manually without a gem: https://dev.to/morinoko/adding-recaptcha-v3-to-a-rails-app-without-a-gem-46jj
+gem 'new_google_recaptcha'
+
 group :development, :test do
   # See https://edgeguides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", ">= 1.0.0", platforms: %i[ mri mingw x64_mingw ]
