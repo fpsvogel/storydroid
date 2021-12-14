@@ -54,15 +54,22 @@ module StoryDroid
     end
 
     def ai_response
-      raw_resp = @ai.completions(engine: ai_engine,
-                                  parameters:
-                                    { prompt: text,
-                                      max_tokens: response_size,
-                                      temperature: response_temperature })
-                       .parsed_response["choices"]
-      raise ::StoryDroid::EmptyApiResponse if raw_resp.nil?
-      response = raw_resp.map { |c| c["text"] }.first
-      clean_up(response)
+      loop do
+        raw_resp = @ai.completions(engine: ai_engine,
+                                    parameters:
+                                      { prompt: text,
+                                        max_tokens: response_size,
+                                        temperature: response_temperature })
+                        .parsed_response["choices"]
+        raise ::StoryDroid::EmptyApiResponse if raw_resp.nil?
+        response = raw_resp.map { |c| c["text"] }.first
+        response = clean_up(response)
+        return response unless dud_response?(response)
+      end
+    end
+
+    def dud_response?(response)
+      response.length < response_size
     end
 
     def ai_engine
