@@ -10,14 +10,17 @@ class StoriesController < ApplicationController
   end
 
   def update
-    if params[:story].length > ::StoryDroid::Story::MAX_LENGTH
-      session[:story] = params[:story][0..::StoryDroid::Story::MAX_LENGTH]
-      session_cookie_full
-    elsif pass_recaptcha?
-      session[:story] = ::StoryDroid::Story.continued_text(params[:story])
+    if pass_recaptcha?
+      continued = ::StoryDroid::Story.continued_text(params[:story])
+      if continued.length > ::StoryDroid::Story::MAX_LENGTH
+        session_cookie_full
+        return
+      end
+      session[:story] = continued
       redirect_to stories_edit_path(anchor: "footer"), status: "303"
     else
-      render(:file => File.join(Rails.root, 'public/403-recaptcha.html'), :status => 403, :layout => false)
+      redirect_to stories_edit_path,
+        alert: "You failed the reCAPTCHA. Are you a bot? If not, try again!"
     end
   end
 

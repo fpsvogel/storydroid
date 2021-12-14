@@ -12,7 +12,7 @@ RSpec.describe "API-querying story page", type: :system do
       visit stories_edit_path
       default_story_length = find('textarea').text.length
       find('input[type="submit"]').click
-      expect(find('textarea').text.length).to be > default_story_length
+      expect(find('textarea').text.length).to be > (default_story_length + 20)
     end
 
     it "shows a warning when the story is too long" do
