@@ -1,6 +1,10 @@
 module StoryDroid
   class Story
     MAX_LENGTH = 1700
+    # MAX_LENGTH prevents the session cookie from overflowing. my first solution:
+    # rescue_from ActionDispatch::Cookies::CookieOverflow, with: :session_cookie_full
+    # but for some reason the exception wasn't caught.
+
     DEFAULT_TEXTS =
       {
         zombie: <<~STORY

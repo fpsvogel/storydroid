@@ -32,8 +32,8 @@ class StoriesController < ApplicationController
 
   def session_cookie_full
     redirect_to stories_edit_path,
-      alert: "You've reached the story length limit! Soon I'll add a signup " \
-             "option so that you can make a story even longer 🙂"
+      alert: "You've reached the story length limit! You can continue your " \
+             "story at beta.openai.com/playground."
   end
 
   def pass_recaptcha?
