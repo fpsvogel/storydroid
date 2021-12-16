@@ -1,7 +1,7 @@
 <h1 align="center">🤖 Story Droid 🤖</h1>
 <p align="center">└[∵┌]└[ ∵ ]┘[┐∵]┘</p>
 
-Welcome to the [Story Droid](https://storydroid.herokuapp.com/) codebase. I'm building this as I read Jason Swett's [Complete Guide to Rails Testing](https://www.codewithjason.com/complete-guide-to-rails-testing/) so that I can improve my testing skills and learn RSpec.
+Welcome to the [Story Droid](https://storydroid.herokuapp.com/) codebase. I built this little app as an experiment which [I wrote about on my blog](https://fpsvogel.com/posts/2021/gpt3-ai-story-writer).
 
 ### Table of Contents
 
@@ -15,10 +15,8 @@ Welcome to the [Story Droid](https://storydroid.herokuapp.com/) codebase. I'm bu
 
 The GPT-3 API [is now in open beta](https://beta.openai.com) and I wanted to play around with it after I stumbled upon some neat AI story generators:
 
-- https://app.inferkit.com/demo
 - https://sassbook.com/ai-writer
 - https://play.aidungeon.io/main/home
-- https://www.plot-generator.org.uk/story/
 - https://www.deepstory.ai/#!/
 
 ## Contributing
