@@ -1,7 +1,7 @@
 <h1 align="center">🤖 Story Droid 🤖</h1>
 <p align="center">└[∵┌]└[ ∵ ]┘[┐∵]┘</p>
 
-Welcome to the [Story Droid](https://storydroid.herokuapp.com/) codebase. I built this little app as an experiment which [I wrote about on my blog](https://fpsvogel.com/posts/2021/gpt3-ai-story-writer).
+Welcome to the Story Droid codebase. I built this little app as an experiment which [I wrote about on my blog](https://fpsvogel.com/posts/2021/gpt3-ai-story-writer).
 
 ### Table of Contents
 
